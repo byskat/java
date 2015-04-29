@@ -55,7 +55,7 @@ public final class Equips {
     
     public ResultSet obtenirEquips(int id) throws SQLException{
         String[] params = {Equip.E_ID};
-        String sql = Equip.createQuery();
+        String sql = Equip.createQuery(params);
         PreparedStatement pstmt = JavaConnection.getConnection().prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
         pstmt.setInt(1, id);
         
