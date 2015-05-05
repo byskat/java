@@ -18,8 +18,8 @@ public class Jugador {
     private int dorsal;
     private int edat;
 
-    public Jugador(int jug_id, int eq_id, String jug_nom, int dorsal, int edat) {
-        this.jug_id = jug_id;
+    public Jugador(int eq_id, String jug_nom, int dorsal, int edat) {
+        this.jug_id = -1;
         this.eq_id = eq_id;
         this.jug_nom = jug_nom;
         this.dorsal = dorsal;
@@ -74,6 +74,30 @@ public class Jugador {
         this.edat = edat;
     }
 
+    public static String createQuery(){
+        return Jugador.SELECT_ALL;
+    }
+
+    public static String createQuery(String[] where){
+        String st = Jugador.SELECT_ALL+" WHERE ";
+        for(int i = 0; i<where.length;i++){
+            st += where[i]+"= ?";
+            if(where.length>1) st+=" AND ";
+        }
+        
+        return st;
+    }
+
+    public static String createQuery(String select, String[] where){
+        String st = "Select "+select+" FROM "+Jugador.J_TAULA+" WHERE ";
+        for(int i = 0; i<where.length;i++){
+            st += where[i]+"= ?";
+            if(where.length>1&&i!=where.length-1) st+=" AND ";
+        }
+        
+        return st;
+    }
+    
     @Override
     public String toString() {
         return "Jugador{" + "jug_id=" + jug_id + ", eq_id=" + eq_id + ", jug_num=" + jug_nom + ", dorsal=" + dorsal + ", edat=" + edat + '}';

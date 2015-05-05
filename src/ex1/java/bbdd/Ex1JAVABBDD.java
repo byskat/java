@@ -10,24 +10,35 @@ public class Ex1JAVABBDD {
 
     public static void main(String[] args) throws SQLException {
 
-        /*
-        System.out.println("-- MOSTREM EQUIPS --");
-        JavaConnection.viewEquips();
         
-        JavaConnection.closeConnection();
-    
-        String[] params = {Equip.E_ID,Equip.E_ESTADI};
-        System.out.println(Equip.createQuery(params));
-               */
         
-        Equips cosa = new Equips();
+        //Equips cosa = new Equips();
+        Jugadors cosa2 = new Jugadors();
         
-        System.out.println(cosa.primer().toString());
-        System.out.println(cosa.seguent().toString());
-        System.out.println(cosa.seguent().toString());
-        System.out.println(cosa.anterior().toString());
-        System.out.println(cosa.anterior().toString());
-        System.out.println(cosa.anterior().toString());
+        //System.out.println(cosa2.primer().toString());
+        
+        
+        //System.out.println(cosa2.buscar(2).toString());
+        
+        //Jugador jus = new Jugador(3,"Cosa",34,34);
+        
+        //System.out.println(cosa2.primer().toString());
+        //System.out.println(cosa2.seguent().toString());
+        //System.out.println(cosa2.seguent().toString());
+        //System.out.println(cosa2.anterior().toString());
+        //System.out.println(cosa2.anterior().toString());
+        //System.out.println(cosa2.anterior().toString());
+        
+        
+        //cosa2.afegirJugador(jus);
+        
+        //System.out.println(cosa2.ultim().toString());
+        
+        //Equip eq = new Equip("Impressive Team","Impressive Stadium","Impressive City","08500");
+        
+        //cosa.afegirEquip(eq);
+        cosa2.eliminarJugador(5);
+        //System.out.println(cosa.buscar(104).toString());
         
     }
     

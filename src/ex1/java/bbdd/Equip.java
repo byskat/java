@@ -1,10 +1,14 @@
 package ex1.java.bbdd;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-
+/**
+ * Classe que crea equips, conté les dades de la taula Equips per poder tractar-les
+ * @author valarcon
+ */
 public class Equip {
     
+    /*
+    Constants que ens donen els noms dels camps i de les taules.
+    */
     public static final String E_TAULA = "EQUIPS";
     
     public static final String E_ID = "EQ_ID";
@@ -15,20 +19,34 @@ public class Equip {
     
     public static String SELECT_ALL = "SELECT "+E_ID +", "+E_NOM+", "+E_ESTADI+", "+E_POBLACIO+", "+E_COD_POSTAL+" FROM "+E_TAULA;
         
+    /*
+    Atributs de la classe equip.
+    */
     private int eq_id;
     private String eq_nom;
     private String estadi;
     private String poblacio;
     private String cod_postal;
 
-    public Equip(int eq_id, String eq_nom, String estadi, String poblacio, String cod_postal) {
-        this.eq_id = eq_id;
+    /**
+     * Classe que rep tots els parametres a exepció del id, aquest s'auto genera
+     * a la base de dades.
+     * @param eq_nom
+     * @param estadi
+     * @param poblacio
+     * @param cod_postal
+     */
+    public Equip(String eq_nom, String estadi, String poblacio, String cod_postal) {
+        this.eq_id = -1;
         this.eq_nom = eq_nom;
         this.estadi = estadi;
         this.poblacio = poblacio;
         this.cod_postal = cod_postal;
     }
     
+    /**
+     * Constructora que no rep cap parametre, posa per defecte el contingut.
+     */
     public Equip() {
         this.eq_id = -1;
         this.eq_nom = null;
@@ -78,10 +96,19 @@ public class Equip {
         this.cod_postal = cod_postal;
     }
     
+    /**
+     * Funcio que crea l'sql que seleciona tot el contingut.
+     * @return
+     */
     public static String createQuery(){
         return Equip.SELECT_ALL;
     }
 
+    /**
+     * Rep els parametres de where, retorna sql.
+     * @param where
+     * @return
+     */
     public static String createQuery(String[] where){
         String st = Equip.SELECT_ALL+" WHERE ";
         for(int i = 0; i<where.length;i++){
@@ -92,6 +119,12 @@ public class Equip {
         return st;
     }
 
+    /**
+     * Rep el camp de selecio i el where.
+     * @param select
+     * @param where
+     * @return
+     */
     public static String createQuery(String select, String[] where){
         String st = "Select "+select+" FROM "+Equip.E_TAULA+" WHERE ";
         for(int i = 0; i<where.length;i++){

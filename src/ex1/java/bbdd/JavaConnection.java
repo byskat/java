@@ -48,24 +48,6 @@ public class JavaConnection {
         return rs;
     }
     
-    
-    public static void viewEquips() throws SQLException{
-        
-        ResultSet rs = executeQuerySeleccio("Select * from equips");
-        
-        while(rs.next()){
-            Equip eq = new Equip();
-            eq.setEq_id(rs.getInt(1));
-            eq.setEq_nom(rs.getString(2));
-            eq.setEstadi(rs.getString(3));
-            eq.setPoblacio(rs.getString(4));
-            eq.setCod_postal(rs.getString(5));
-            
-            System.out.println(eq.toString());   
-        }
-        rs.close();
-    }
-    
     //Funció que executa una PreparedSteatment de selecció. I retorna un resultset.
     public static ResultSet selector(PreparedStatement st){
         ResultSet rs = null;
