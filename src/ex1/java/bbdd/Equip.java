@@ -1,7 +1,7 @@
 package ex1.java.bbdd;
 
 /**
- * Classe que crea equips, conté les dades de la taula Equips per poder tractar-les
+ * Classe que crea equips, conté les dades de la taula Equips per poder tractar-les.
  * @author valarcon
  */
 public class Equip {

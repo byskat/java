@@ -89,17 +89,14 @@ public final class Equips {
      */
     public Equip buscar(int id) throws SQLException{
         boolean bTrobat=false;
-
         rs.first();
         Equip res = null;
-        
         while(!bTrobat && rs.next()){
             if(rs.getInt(Equip.E_ID)==id){
                 res = this.actual();
                 bTrobat=true;
             }
         }
-        
         if(bTrobat){
             rs.previous();
         }

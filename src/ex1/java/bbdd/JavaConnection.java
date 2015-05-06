@@ -9,13 +9,22 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Classe que conté les funcións generiques de conexió i execució de sql's i 
+ * statements a la base de dades. Al essèr generica la utilitzen les dos classes
+ * jugadors i equips.
  * @author Víctor Alarcón Serrano
  */
 public class JavaConnection {
     
+    //L'unic atribut de la classe, conté la conexió a la base de dades, aixó es
+    //així per que puguem accedir (des dels seus metodes) sense obrir noves conexions.
     private static Connection conn;
     
+    /**
+     * Funció que es conecta a la base de dades si no hi ha fet abans i si ho ha
+     * fet retorna conn.
+     * @return
+     */
     public static Connection getConnection(){
         
         if(conn==null){
@@ -31,10 +40,20 @@ public class JavaConnection {
         
     }
     
+    /**
+     * Tenca la conexio conn.
+     * @throws SQLException
+     */
     public static void closeConnection() throws SQLException{
         JavaConnection.getConnection().close();
     }
     
+    /**
+     * Funció que rep un sql i l'executa. Retorna un resultset.
+     * @param query
+     * @return
+     * @throws SQLException 
+     */
     private static ResultSet executeQuerySeleccio(String query) throws SQLException{
         Statement select = null;
         ResultSet rs = null;
@@ -48,7 +67,11 @@ public class JavaConnection {
         return rs;
     }
     
-    //Funció que executa una PreparedSteatment de selecció. I retorna un resultset.
+    /**
+     * Funció que executa una PreparedSteatment de selecció. I retorna un resultset.
+     * @param st
+     * @return
+     */
     public static ResultSet selector(PreparedStatement st){
         ResultSet rs = null;
         
@@ -61,7 +84,11 @@ public class JavaConnection {
         return rs;
     }
     
-    //Funció que executa un sql de selecció. I retorna un resultset.
+    /**
+     * Funció que executa un sql de selecció. I retorna un resultset.
+     * @param sql
+     * @return
+     */
     public static ResultSet selector(String sql){
         Statement st = null;
         ResultSet rs = null;

@@ -1,7 +1,14 @@
 package ex1.java.bbdd;
 
+/**
+ * Classe que crea jugadors, conté les dades de la taula Jugadors per poder tractar-les.
+ * @author valarcon
+ */
 public class Jugador {
     
+    /*
+    Constants que ens donen els noms dels camps i de les taules.
+    */
     public static final String J_TAULA = "JUGADORS";
     
     public static final String J_ID = "JUG_ID";
@@ -12,12 +19,23 @@ public class Jugador {
     
     public static String SELECT_ALL = "SELECT "+J_ID +", "+J_EQ_ID+", "+J_NOM+", "+J_DORSAL+", "+J_EDAT+" FROM "+J_TAULA; 
     
+    /*
+    Atributs de la classe jugador.
+    */
     private int jug_id;
     private int eq_id;
     private String jug_nom;
     private int dorsal;
     private int edat;
 
+    /**
+     * Classe que rep tots els parametres a exepció del id, aquest s'auto genera
+     * a la base de dades.
+     * @param eq_id
+     * @param jug_nom
+     * @param dorsal
+     * @param edat
+     */
     public Jugador(int eq_id, String jug_nom, int dorsal, int edat) {
         this.jug_id = -1;
         this.eq_id = eq_id;
@@ -26,6 +44,9 @@ public class Jugador {
         this.edat = edat;
     }
     
+    /**
+     * Constructora que no rep cap parametre, posa per defecte el contingut.
+     */
     public Jugador() {
         this.jug_id = -1;
         this.eq_id = -1;
@@ -74,10 +95,19 @@ public class Jugador {
         this.edat = edat;
     }
 
+    /**
+     * Funcio que crea l'sql que seleciona tot el contingut.
+     * @return
+     */
     public static String createQuery(){
         return Jugador.SELECT_ALL;
     }
 
+    /**
+     * Rep els parametres de where, retorna sql.
+     * @param where
+     * @return
+     */
     public static String createQuery(String[] where){
         String st = Jugador.SELECT_ALL+" WHERE ";
         for(int i = 0; i<where.length;i++){
@@ -87,7 +117,13 @@ public class Jugador {
         
         return st;
     }
-
+    
+    /**
+     * Rep el camp de selecio i el where.
+     * @param select
+     * @param where
+     * @return
+     */
     public static String createQuery(String select, String[] where){
         String st = "Select "+select+" FROM "+Jugador.J_TAULA+" WHERE ";
         for(int i = 0; i<where.length;i++){
